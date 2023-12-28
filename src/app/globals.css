@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto:wght@300;400;500;700;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+    background-color: #060d20;
+}
+.card {
+    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.text-shadow-white {
+    text-shadow: 0px 0px 3px white,
+        0px 0px 3px white,
+        0px 0px 3px white,
+        0px 0px 3px white,
+        0px 0px 3px white,
+        0px 0px 3px white;
+}
+
+.text-shadow-black {
+    text-shadow: 0px 0px 3px black,
+        0px 0px 3px black,
+        0px 0px 3px black,
+        0px 0px 3px black,
+        0px 0px 3px black,
+        0px 0px 3px black;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+    position: absolute;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 7px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    border-radius: 12px;
+    height: 20px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 25px;
+}
+
+.glowing-effect {
+    transition: all 1s linear;
+    animation: animate 8s linear infinite;
+}
+
+@keyframes animate {
+
+    0%,
+    5%,
+    18%,
+    20%,
+    45%,
+    50.1%,
+    60%,
+    65.1%,
+    80%, 98% {
+        
+        color: white;
+        text-shadow: 0 0 10px #03bcf4,
+            0 0 20px #03bcf4;
+       
+    }
+
+    0%,
+    10%,
+    18%,
+    20%,
+    25%,
+    35%,
+    85%,
+    90.1%,
+    92%,
+    100% {
+        text-shadow: none;
+    }
+
+}
+
+.nav-boxshadow{
+    box-shadow: 
+    0px 0px 20px 5px #060d20ca,
+    0px 0px 4px 7px #060d2086;
+}
+
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.slider:hover i::before{
+    left: 10%;
+    width: 30px;  
+}
+.slider:hover i::after{
+    right: 10%;
+    width: 30px;  
+}
+.membership-container-bgimage {
+    background-image: url('https://cdn.pixabay.com/photo/2016/02/16/19/16/abdominal-1203881_640.jpg');
+    background-size: cover;
+    background-position: center;
+  }
