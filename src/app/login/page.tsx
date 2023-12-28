@@ -58,17 +58,17 @@ const LoginPage: React.FC = () => {
                     </h6>
 
                     <span className="uppercase text-white text-xs tracking-widest flex items-center md:justify-start justify-center md:flex-row flex-col gap-1">
-                        Restart your journey with{" "}
+                        Restart your journey with
                         <img
                             src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
                             alt="Logo"
                             className="h-12"
-                        />{" "}
-                        again{" "}
+                        />
+                        again
                     </span>
 
                     <span className="uppercase text-white font-light md:text-start text-center">
-                        Don't have a account?{" "}
+                        Don&apos;t have a account?
                         <Link href="/signup" className="text-[#3c8aff] ml-1">
                             Register
                         </Link>
@@ -116,7 +116,7 @@ const LoginPage: React.FC = () => {
                     <div className=" md:w-auto w-full flex items-center md:justify-start justify-center  mt-3">
                         <button className="border slider border-white py-3 px-12 rounded transition-all tracking-wide hover:tracking-widest relative" onClick={handleSubmit}>
                             Login
-                            <i className="absolute inset-0 block before:absolute before:content-[''] before:border-2 before:border-white before:w-[20px] before:h-[8px] before:top-[-3.5px] before:bg-[#060d20] before:left-[80%] before:transition-all after:absolute after:content-[''] after:border-2 after:border-white after:w-[20px] after:h-[8px] after:bottom-[-3.5px] after:bg-[#060d20] after:right-[80%] after:transition-all"></i>
+                            <i className="absolute inset-0 block before:absolute before:border-2 before:border-white before:w-[20px] before:h-[8px] before:top-[-3.5px] before:bg-[#060d20] before:left-[80%] before:transition-all after:absolute after:border-2 after:border-white after:w-[20px] after:h-[8px] after:bottom-[-3.5px] after:bg-[#060d20] after:right-[80%] after:transition-all"></i>
                         </button>
                     </div>
                 </div>
