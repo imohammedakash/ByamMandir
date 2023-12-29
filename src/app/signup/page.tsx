@@ -7,6 +7,7 @@ import {
     AiOutlineEye,
     AiOutlineEyeInvisible,
 } from "react-icons/ai";
+import { useRouter } from 'next/navigation'
 import { BsTelephone } from "react-icons/bs";
 import AuthInput from "@/components/InputControl/AuthInput";
 import ErrorModal from "@/components/Modals/ErrorModal";
@@ -15,6 +16,7 @@ import Link from "next/link";
 import { registerUserApi } from "@/Redux/Action/user";
 import { registerUser } from "@/Redux/UserSlice";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 interface credentialsProps {
     firstname: string;
     lastname: string;
@@ -28,6 +30,8 @@ const RegisterPage: React.FC = () => {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false)
+    const router = useRouter()
     const [credentials, setCredentials] = useState<credentialsProps>({
         firstname: "",
         lastname: "",
@@ -46,9 +50,24 @@ const RegisterPage: React.FC = () => {
             setShowErrorModal(true);
             return;
         }
-        e.preventDefault();
-        const user = await registerUserApi(credentials);
-        dispatch(registerUser(user));
+        setLoading(true)
+        try {
+            const data = await registerUserApi(credentials);
+            if (data.status === 200) {
+                setLoading(false);
+                dispatch(registerUser(data.data));
+                return router.push(data.mailStatus === 200 ? '/verify' : '/')
+            }
+            const errorMessage = data?.message?.includes(':')
+                ? data.message.split(':')[2].trim()
+                : data?.message?.trim() || 'An unknown error occurred';
+            setMessage(errorMessage);
+            setShowErrorModal(!!errorMessage)
+        } catch (err: any) {
+            setMessage(err.message);
+            setShowErrorModal(true);
+        }
+
 
     };
 
@@ -160,10 +179,12 @@ const RegisterPage: React.FC = () => {
                     </div>
                     <div className=" md:w-auto w-full flex items-center md:justify-start justify-center  mt-3">
                         <button
-                            className="border slider border-white py-3 px-12 rounded transition-all tracking-wide hover:tracking-widest relative"
+                            className="border slider border-white py-3 px-12 flex items-center justify-center w-[12rem] text-center rounded transition-all tracking-wide hover:tracking-widest relative"
                             onClick={handleSubmit}
                         >
-                            Register
+                            {
+                                loading ? <div className="h-6 w-6 rounded-full border-t-2 border-l-2 animate-spin " /> : 'Register'
+                            }
                             <i className="absolute inset-0 block before:absolute before:content-[''] before:border-2 before:border-white before:w-[20px] before:h-[8px] before:top-[-3.5px] before:bg-[#060d20] before:left-[80%] before:transition-all after:absolute after:content-[''] after:border-2 after:border-white after:w-[20px] after:h-[8px] after:bottom-[-3.5px] after:bg-[#060d20] after:right-[80%] after:transition-all"></i>
                         </button>
                     </div>

@@ -1,10 +1,13 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-    username: {
+    firstname: {
         type: String,
-        unique: true,
-        required: [true, 'Please Provide an username'],
+        required: [true, 'Please Provide an first name'],
+    },
+    lastname: {
+        type: String,
+        required: [true, 'Please Provide your last name'],
     },
     email: {
         type: String,
@@ -25,8 +28,7 @@ const userSchema = new mongoose.Schema({
     },
     forgetPasswordToken: String,
     forgetPasswordTokenExpiry: Date,
-    verifyToken: String,
-    veryifyTokenExpiry: Date,
+    otp: String
 })
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);
