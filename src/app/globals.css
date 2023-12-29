@@ -3,15 +3,16 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     background-color: #060d20;
 }
+
 .card {
     box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
     background: rgba(255, 255, 255, 0.1);
@@ -72,12 +73,13 @@ body::-webkit-scrollbar {
     50.1%,
     60%,
     65.1%,
-    80%, 98% {
-        
+    80%,
+    98% {
+
         color: white;
         text-shadow: 0 0 10px #03bcf4,
             0 0 20px #03bcf4;
-       
+
     }
 
     0%,
@@ -91,14 +93,15 @@ body::-webkit-scrollbar {
     92%,
     100% {
         text-shadow: none;
+        color: #4fd3ff08
     }
 
 }
 
-.nav-boxshadow{
-    box-shadow: 
-    0px 0px 20px 5px #060d20ca,
-    0px 0px 4px 7px #060d2086;
+.nav-boxshadow {
+    box-shadow:
+        0px 0px 20px 5px #060d20ca,
+        0px 0px 4px 7px #060d2086;
 }
 
 
@@ -114,16 +117,18 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.slider:hover i::before{
+.slider:hover i::before {
     left: 10%;
-    width: 30px;  
+    width: 30px;
 }
-.slider:hover i::after{
+
+.slider:hover i::after {
     right: 10%;
-    width: 30px;  
+    width: 30px;
 }
+
 .membership-container-bgimage {
     background-image: url('https://cdn.pixabay.com/photo/2016/02/16/19/16/abdominal-1203881_640.jpg');
     background-size: cover;
     background-position: center;
-  }
+}

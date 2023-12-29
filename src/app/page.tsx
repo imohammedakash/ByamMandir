@@ -61,7 +61,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="absolute w-screen md:h-full h-screen  md:flex items-center justify-center inset-0 ">
-                <div className="flex flex-col items-center justify-center md:mt-0 mt-[50%] -space-y-20 font-bold glowing-effect text-[#4fd3ff08] ">
+                <div className="flex flex-col items-center justify-center md:mt-0 mt-[50%] -space-y-20 font-bold glowing-effect ">
                   <span className='lg:text-[15rem] md:text-[12rem] text-[8rem]'>BYAM</span>
                   <span className='lg:text-[15rem] md:text-[12rem] text-[8rem]'>MANDIR</span>
                 </div>
