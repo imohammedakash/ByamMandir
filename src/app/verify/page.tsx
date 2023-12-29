@@ -1,5 +1,7 @@
 "use client"
+import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
+import { toast } from "react-toastify";
 
 interface Props { }
 
@@ -7,6 +9,7 @@ const OTPField: React.FC<Props> = (props): JSX.Element => {
     const [otp, setOtp] = useState<string[]>(new Array(6).fill(""));
     const [active, setActive] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
+    const router = useRouter()
     const inputRef = useRef<HTMLInputElement>(null)
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const newOtp: string[] = [...otp]
@@ -24,7 +27,8 @@ const OTPField: React.FC<Props> = (props): JSX.Element => {
         inputRef?.current?.focus()
     }, [active])
     const handleSubmit = () => {
-
+        toast.success('Email Verfied Successfully')
+        router.push('/')
     }
     return (
         <div className="h-screen flex justify-center items-center space-x-2 flex-col">
