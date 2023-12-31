@@ -46,10 +46,10 @@ const Menu = () => {
                     </div>
                     <span className='font-medium'>Profile</span>
                 </Link> : <div className='w-full flex'>
-                    <Link href='/profile' className="flex-1 flex items-center justify-center gap-4 border-b px-3 py-3">
+                    <Link href='/login' className="flex-1 flex items-center justify-center gap-4 border-b px-3 py-3">
                         <span className='font-medium'>Login</span>
                     </Link>
-                    <Link href='/profile' className=" flex-1 flex items-center justify-center gap-4 border-b border-l px-3 py-3">
+                    <Link href='/signup' className=" flex-1 flex items-center justify-center gap-4 border-b border-l px-3 py-3">
                         <span className='font-medium'>Sign Up</span>
                     </Link>
                 </div>
