@@ -7,9 +7,9 @@ import {
 import { BsTelephone } from "react-icons/bs";
 import Cookies from 'js-cookie'
 import AuthInput from "@/components/InputControl/AuthInput";
-import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { getUserProfileApi, updateUserApi } from '@/Redux/Action/user';
+import { useRouter } from 'next/navigation';
 interface profileProps {
     firstname: string;
     lastname: string;
@@ -19,7 +19,7 @@ interface profileProps {
 
 }
 const GeneralPage: React.FC = () => {
-    const dispatch = useDispatch()
+    const router = useRouter()
     let [profile, setProfile] = useState<profileProps>({
         firstname: '',
         lastname: '',
@@ -35,17 +35,16 @@ const GeneralPage: React.FC = () => {
         }
     }, [])
     const getUserDetails = () => {
-        try {
-            getUserProfileApi().then((data => {
-                if (data?.status === 200) {
-                    setProfile(data.data)
-                    return
-                }
-                toast.error(data?.message)
-            })).catch((err: any) => { throw new Error(err) })
-        } catch (err: any) {
+        getUserProfileApi().then((data => {
+            if (data?.status === 200) {
+                setProfile(data.data)
+                return
+            }
+            toast.error(data?.message)
+        })).catch((err: any) => {
+            router.push('/')
             toast.error(err.message)
-        }
+        })
     }
     const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
