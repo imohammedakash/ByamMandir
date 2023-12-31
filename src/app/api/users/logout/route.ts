@@ -7,8 +7,8 @@ export async function GET(request: NextRequest) {
             message: "Logged Out Successfully",
             status: 200,
         })
-        response.cookies.set("token", "", { expires: new Date(0) })
-        return response
+       await response.cookies.set("token", "", { expires: new Date(0) })
+       return response
     } catch (err: any) {
         return NextResponse.json({
             message: err.message,

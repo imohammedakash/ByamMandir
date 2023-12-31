@@ -14,7 +14,7 @@ const Home = () => {
           <div className="flex items-center justify-around w-full ">
             <div className="md:w-auto w-full flex items-start justify-start flex-col gap-5">
               <div className=" md:w-auto w-full p-2 flex items-start justify-start  cursor-default z-10">
-                <img src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676208569/Screenshot_20230212_185640-removebg-preview_i6v45v.png" alt="" className='h-12 rotate-45' />
+                <img loading='lazy' src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676208569/Screenshot_20230212_185640-removebg-preview_i6v45v.png" alt="" className='h-12 rotate-45' />
                 <div className="flex flex-col items-start justify-start">
                   <span className='font-bold text-lg -skew-x-12 text-white'>Traning</span>
                   <span className='font-bold text-base -skew-x-12 text-[#257fddd6] pl-2'>Zone.cog</span>
@@ -67,7 +67,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="md:flex hidden flex-col items-end justify-center h-full absolute bottom-0">
-                <img src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676300017/pexels-leon-ardho-2468339-removebg-preview_1_mk8dl1.png" alt="" className='' />
+                <img loading='lazy' src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676300017/pexels-leon-ardho-2468339-removebg-preview_1_mk8dl1.png" alt="" className='' />
               </div>
             </div>
             <div className=" flex items-center justify-center md:h-full md:relative absolute top-6 right-5 card p-4 rounded-md cursor-default">

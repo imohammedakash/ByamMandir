@@ -13,7 +13,7 @@ const Navbar = () => {
     <div className="w-full bg-[#060d20] sticky top-0 z-50 nav-boxshadow">
       <div className="py-4 px-6 flex items-center justify-between">
         <Link href="/">
-          <img
+          <img loading='lazy'
             src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
             alt="Logo"
             className="sm:h-12 h-8"

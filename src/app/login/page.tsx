@@ -66,7 +66,7 @@ const LoginPage: React.FC = () => {
                 <ErrorModal message={message} setModalClose={setShowErrorModal} />
             )}
             <div className="absolute h-full w-full before:content-[''] before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#060d20] before:to-[#060d2033] ">
-                <img
+                <img loading='lazy'
                     src="https://cdn.pixabay.com/photo/2017/07/21/09/35/muscles-2525200__340.jpg"
                     alt=""
                     className="h-full w-full object-cover"
@@ -83,7 +83,7 @@ const LoginPage: React.FC = () => {
 
                     <span className="uppercase text-white text-xs tracking-widest flex items-center md:justify-start justify-center md:flex-row flex-col gap-1">
                         Restart your journey with
-                        <img
+                        <img loading='lazy'
                             src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
                             alt="Logo"
                             className="h-12"

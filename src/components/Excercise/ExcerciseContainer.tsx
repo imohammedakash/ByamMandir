@@ -10,7 +10,7 @@ const ExcerciseContainer: React.FC<excerciseContainerProps> = ({ category, tutor
     return (
         <div className='bg-white rounded-lg overflow-hidden p-4 box-border w-80 flex flex-col gap-3'>
             <div className="bg-white h-56 w-72">
-                <img src={tutorialImage} alt="" className='h-56 w-72 object-contain' />
+                <img loading='lazy' src={tutorialImage} alt="" className='h-56 w-72 object-contain' />
             </div>
             <div className="flex flex-col gap-4">
                 <div className='flex items-center justify-start flex-wrap gap-4'>

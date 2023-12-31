@@ -83,7 +83,7 @@ const GeneralPage: React.FC = () => {
                     <span></span>
                 </div>
                 <div className="">
-                    <img className='sm:h-24 sm:w-24 w-20 h-20 rounded-full' src="https://mohammedakash.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FProfile.2dc40604.jpg&w=384&q=75" alt="" />
+                    <img loading='lazy' className='sm:h-24 sm:w-24 w-20 h-20 rounded-full' src="https://mohammedakash.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FProfile.2dc40604.jpg&w=384&q=75" alt="" />
                 </div>
             </div>
             <div className="border w-full flex items-center flex-col justify-between rounded p-4 mt-3">

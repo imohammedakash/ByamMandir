@@ -25,7 +25,7 @@ const Explore = () => {
                     </div>
                 </div>
                 <div className="sm:w-1/2 w-full hidden sm:flex flex-wrap items-start justify-center my-10 gap-10">
-                    <img className='w-full' src="https://res-console.cloudinary.com/dn83xtspp/thumbnails/v1/image/upload/v1703789054/NzAxNTkxMF9nYm5kZXc=/grid_landscape" alt="" />
+                    <img loading='lazy' className='w-full' src="https://res-console.cloudinary.com/dn83xtspp/thumbnails/v1/image/upload/v1703789054/NzAxNTkxMF9nYm5kZXc=/grid_landscape" alt="" />
                 </div>
             </div>
         </div>

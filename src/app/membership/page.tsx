@@ -11,7 +11,7 @@ const Membership = () => {
         <Wrapper>
             <div className=" w-full relative">
                 <div className="absolute h-full w-full before:content-[''] before:absolute before:top-0 before:right-0 before:bottom-0 before:left-0 before:bg-gradient-to-t before:from-[#060d20] before:to-[#060d20b1] z-[-2] ">
-                    <img src="https://images.unsplash.com/photo-1561214095-fea147325936?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="" className="h-full w-full object-cover" />
+                    <img loading='lazy' src="https://images.unsplash.com/photo-1561214095-fea147325936?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80" alt="" className="h-full w-full object-cover" />
                 </div>
                 <div className="w-full flex items-center justify-center flex-col p-4 gap-2">
                     <span className='text-[#000000af] sm:text-5xl text-4xl font-bold font-poppins text-shadow-white'>Choose Your Plain</span>
