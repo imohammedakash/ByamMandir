@@ -66,16 +66,32 @@ class commonHelper {
         }
     }
     comparePassword = async (enteredPassword: any, hashedPassword: any) => {
-        try {
-            const match = await bcrypt.compare(enteredPassword, hashedPassword);
-            return match;
-        } catch (error) {
-            throw new Error('Error comparing passwords');
-        }
-    }
+        return new Promise((resolve, reject) => {
+            bcrypt.compare(enteredPassword, hashedPassword, (err: any, match: any) => {
+                if (err) {
+                    console.log("Err=>",err);
+                    reject(err);
+                } else if (!match) {
+                    reject('Invalid password');
+                } else {
+                    resolve({ match });
+                }
+            });
+        });
+    };
 
-
-
+    JwtParser = async (token: string) => {
+        const JWT_SECRET = process.env.JWT_SECRET;
+        return new Promise((resolve, reject) => {
+            Jwt.verify(token, JWT_SECRET, (err: any, decoded: any) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve({ ...decoded });
+                }
+            });
+        });
+    };
 }
 
 export default new commonHelper()

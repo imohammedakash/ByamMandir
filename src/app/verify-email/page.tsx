@@ -1,4 +1,5 @@
 "use client"
+import { verifyEmailApi } from "@/Redux/Action/user";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
@@ -26,9 +27,23 @@ const OTPField: React.FC<Props> = (props): JSX.Element => {
     useEffect(() => {
         inputRef?.current?.focus()
     }, [active])
-    const handleSubmit = () => {
-        toast.success('Email Verfied Successfully')
-        router.push('/')
+    const handleSubmit = async () => {
+        let payload = { otp: otp.join('') };
+        try {
+            setLoading(true);
+            let data = await verifyEmailApi(payload);
+            if (data.status >= 200 && data.status < 300) {
+                toast.success(data.message);
+                router.push('/');
+            } else {
+                toast.error(data.message);
+            }
+        } catch (e: any) {
+            toast.error(e.message)
+        }finally{
+            setLoading(false);
+        }
+
     }
     return (
         <div className="h-screen flex justify-center items-center space-x-2 flex-col">

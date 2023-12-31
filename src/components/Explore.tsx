@@ -3,7 +3,7 @@ import React from 'react'
 
 const Explore = () => {
     return (
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center my-10">
             <div className='w-[80%] flex sm:items-center justify-center sm:justify-between sm:flex-row flex-col '>
                 <div className=" sm:mb-0 mb-10 sm:w-1/2 w-full flex items-start justify-center flex-col ">
                     <div className="sm:w-auto w-full flex sm:items-start items-center justify-center flex-col">
@@ -12,7 +12,7 @@ const Explore = () => {
                     </div>
                     <p className='w-full text-white tracking-wider font-mono sm:items-start items-center my-8 text-sm sm:text-start text-center'>Transform your body, energize your spirit. Our gym fosters strength, community, and wellness. Embrace the journey to a healthier youdifferent trainers here</p>
                     <div className="w-full flex items-center sm:justify-start justify-center">
-                        <Link href="/signup" className="bg-white rounded border px-6 flex items-center justify-center gap-1">
+                        <Link href="/membership" className="bg-white rounded border px-6 flex items-center justify-center gap-1">
                             <span>
                                 Get Started
                             </span>

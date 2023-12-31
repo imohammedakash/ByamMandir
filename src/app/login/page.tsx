@@ -13,6 +13,7 @@ import SuccessModal from "@/components/Modals/SuccessModal";
 import Link from "next/link";
 import { loginUserApi } from "@/Redux/Action/user";
 import { registerUser } from "@/Redux/UserSlice";
+import { useRouter } from "next/navigation";
 interface Credentials {
     email: string;
     password: string;
@@ -21,19 +22,42 @@ const LoginPage: React.FC = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [credentials, setCredentials] = useState<Credentials>({ email: "", password: "" });
+    const [loading, setLoading] = useState(false)
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [message, setMessage] = useState("");
     const [showErrorModal, setShowErrorModal] = useState(false);
     const dispatch = useDispatch();
-
+    const router = useRouter()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        const user = await loginUserApi(credentials);
-        dispatch(registerUser(user));
+        if (credentials.email === "" || credentials.password === "") {
+            setMessage("Some fields are yet to be filled");
+            setShowErrorModal(true);
+            return;
+        }
+        try {
+            setLoading(true)
+            const data = await loginUserApi(credentials);
+            if (data.status === 200) {
+                setLoading(false);
+                dispatch(registerUser(data.data));
+                return router.push('/')
+            }
+            const errorMessage = data?.message?.includes(':')
+                ? data.message.split(':')[2].trim()
+                : data?.message?.trim() || 'An unknown error occurred';
+            setMessage(errorMessage);
+            setShowErrorModal(true)
+        } catch (err: any) {
+            setMessage(err.message);
+            setShowErrorModal(true);
+        } finally {
+            setLoading(false);
+        }
     };
     return (
         <div className="h-screen w-full flex md:items-start items-center flex-col justify-center relative transition-all p-2">
@@ -114,9 +138,14 @@ const LoginPage: React.FC = () => {
                         </div>
                     </div>
                     <div className=" md:w-auto w-full flex items-center md:justify-start justify-center  mt-3">
-                        <button className="border slider border-white py-3 px-12 rounded transition-all tracking-wide hover:tracking-widest relative" onClick={handleSubmit}>
-                            Login
-                            <i className="absolute inset-0 block before:absolute before:border-2 before:border-white before:w-[20px] before:h-[8px] before:top-[-3.5px] before:bg-[#060d20] before:left-[80%] before:transition-all after:absolute after:border-2 after:border-white after:w-[20px] after:h-[8px] after:bottom-[-3.5px] after:bg-[#060d20] after:right-[80%] after:transition-all"></i>
+                        <button
+                            className="border slider border-white py-3 px-12 flex items-center justify-center w-[12rem] text-center rounded transition-all tracking-wide hover:tracking-widest relative"
+                            onClick={handleSubmit}
+                        >
+                            {
+                                loading ? <div className="h-6 w-6 rounded-full border-t-2 border-l-2 animate-spin " /> : 'Login'
+                            }
+                            <i className="absolute inset-0 block before:absolute before:content-[''] before:border-2 before:border-white before:w-[20px] before:h-[8px] before:top-[-3.5px] before:bg-[#060d20] before:left-[80%] before:transition-all after:absolute after:content-[''] after:border-2 after:border-white after:w-[20px] after:h-[8px] after:bottom-[-3.5px] after:bg-[#060d20] after:right-[80%] after:transition-all"></i>
                         </button>
                     </div>
                 </div>

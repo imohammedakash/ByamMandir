@@ -13,14 +13,14 @@ const Home = () => {
         <div className="w-full h-[89vh] flex items-center justify-center bg-[#060d20] relative overflow-hidden">
           <div className="flex items-center justify-around w-full ">
             <div className="md:w-auto w-full flex items-start justify-start flex-col gap-5">
-              <div className=" md:w-auto w-full p-2 flex items-start justify-start  cursor-default">
+              <div className=" md:w-auto w-full p-2 flex items-start justify-start  cursor-default z-10">
                 <img src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676208569/Screenshot_20230212_185640-removebg-preview_i6v45v.png" alt="" className='h-12 rotate-45' />
                 <div className="flex flex-col items-start justify-start">
                   <span className='font-bold text-lg -skew-x-12 text-white'>Traning</span>
                   <span className='font-bold text-base -skew-x-12 text-[#257fddd6] pl-2'>Zone.cog</span>
                 </div>
               </div>
-              <div className=" md:w-auto w-full flex flex-col -space-y-8">
+              <div className=" md:w-auto w-full flex flex-col -space-y-8 z-10">
                 <div className="flex md:items-start items-center md:justify-start justify-center gap-5 cursor-default ">
                   <span className='text-[4rem] font-semibold uppercase tracking-tighter text-white font-poppins'>No</span>
                   <span className='text-[4rem] font-semibold uppercase tracking-tighter text-[#1cb0d8] font-poppins'>Pain</span>
@@ -34,7 +34,7 @@ const Home = () => {
                   <Link href="/membership"><button className='bg-blue-700 py-4 px-16 rounded-lg text-white whitespace-nowrap '>Subscribe Now</button></Link>
                 </div>
               </div>
-              <div className="md:w-auto w-full md:rotate-0 rotate-[-90deg] md:static absolute -right-[9.7rem] bottom-20 flex items-center md:justify-start justify-center md:flex-row flex-col md:gap-4 gap-1 md:mt-8">
+              <div className="md:w-auto w-full md:rotate-0 rotate-[-90deg] md:static absolute -right-[9.7rem] bottom-20 flex items-center md:justify-start justify-center md:flex-row flex-col md:gap-4 gap-1 md:mt-8 z-10">
                 <div className="flex items-center justify-start gap-2">
                   <div className=" rounded-full p-2 bg-[#1cb0d8] text-black">
                     <HiPhone className="md:text-xl text-sm" />
@@ -50,7 +50,7 @@ const Home = () => {
               </div>
             </div>
             <div className="flex gap-6 cursor-default">
-              <div className="flex flex-col items-center justify-end md:h-[5.3rem] absolute md:left-1/4 left-10 md:top-10 bottom-10  card p-4 rounded-md z-10 ">
+              <div className="flex flex-col items-center justify-end md:h-[5.3rem] absolute md:left-1/4 left-10 md:top-10 bottom-5 card p-4 rounded-md z-10 ">
                 <div className="uppercase font-bold md:text-xl text-sm flex items-center justify-start gap-2">
                   <span className='text-white'>get</span>
                   <span className='text-blue-500'>07</span>

@@ -5,13 +5,13 @@ export function middleware(request: NextRequest) {
     const isPublicPath = path === '/login' || path === '/signup'
     let token = request.cookies.get('token')?.value || '';
 
-    if(isPublicPath&& token){
+    if (isPublicPath && token) {
         return NextResponse.redirect(new URL('/', request.nextUrl))
     }
 }
 
 export const config = {
     matcher: [
-        '/', '/profile', '/login', '/signup',
+        '/', '/profile','/login', '/signup',
     ]
 }

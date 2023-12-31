@@ -56,13 +56,13 @@ const RegisterPage: React.FC = () => {
             if (data.status === 200) {
                 setLoading(false);
                 dispatch(registerUser(data.data));
-                return router.push(data.mailStatus === 200 ? '/verify' : '/')
+                return router.push(data.mailStatus === 200 ? '/verify-email' : '/')
             }
             const errorMessage = data?.message?.includes(':')
                 ? data.message.split(':')[2].trim()
                 : data?.message?.trim() || 'An unknown error occurred';
             setMessage(errorMessage);
-            setShowErrorModal(!!errorMessage)
+            setShowErrorModal(true)
         } catch (err: any) {
             setMessage(err.message);
             setShowErrorModal(true);
