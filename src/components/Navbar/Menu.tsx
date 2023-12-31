@@ -38,9 +38,9 @@ const Menu = () => {
         }
     }
     return (
-        <div className="flex flex-col bg-white gap-5 shadow-2xl rounded-tr-none rounded-lg pb-6 ">
+        <div className="flex flex-col bg-white gap-5 shadow-2xl rounded-tr-none rounded-lg pb-4 ">
             {
-                token ? <Link href='/profile' className="flex items-center justify-start gap-4 border-b px-3 py-3">
+                token ? <Link href='/profile/general' className="flex items-center justify-start gap-4 border-b px-3 py-3">
                     <div className="flex items-center justify-center border-1 border-gray-200 rounded-full cursor-pointer">
                         <MdPerson className='text-gray-800 text-2xl' />
                     </div>
@@ -64,7 +64,7 @@ const Menu = () => {
                 <NavbarMenuItem menuName='store' Icon={BiStore} />
             </div>
             {
-                token ? <span className='text-gray-800 capitalize cursor-pointer flex items-center justify-start gap-3 px-5 ' onClick={handleLogout}>
+                token ? <span className='text-gray-800 capitalize cursor-pointer flex items-center justify-start gap-3 px-5 py-2 ' onClick={handleLogout}>
                     <MdOutlineLogout className='text-gray-800 text-2xl' />
                     Log out
                 </span> : ''

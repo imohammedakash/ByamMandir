@@ -2,7 +2,6 @@ import { connect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
 import commonHelper from '@/helpers/commonHelper'
 import { NextRequest, NextResponse } from "next/server";
-import template from "@/DocumentTemplate/template";
 connect()
 export async function POST(request: NextRequest) {
     try {

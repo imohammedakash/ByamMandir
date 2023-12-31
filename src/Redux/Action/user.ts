@@ -9,6 +9,14 @@ export const registerUserApi = async (userData: { firstname: string; lastname: s
   const response = await axios.post(`/api/users/signup`, userData);
   return response.data;
 };
+export const getUserProfileApi = async () => {
+  const response = await axios.get(`/api/users/profile`);
+  return response.data;
+};
+export const updateUserApi = async (userData: { firstname: string; lastname: string; phone: string; profile: string }) => {
+  const response = await axios.post(`/api/users/update-profile`, userData);
+  return response.data;
+};
 export const LogoutUserApi = async () => {
   const response = await axios.get(`/api/users/logout`);
   return response.data;
@@ -17,3 +25,4 @@ export const verifyEmailApi = async (userData: { otp: string; }) => {
   const response = await axios.post(`/api/users/verify-email`, userData);
   return response.data;
 };
+

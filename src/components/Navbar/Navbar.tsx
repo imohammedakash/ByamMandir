@@ -1,18 +1,14 @@
 "use client"
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Menu from "./Menu";
 import Cookies from 'js-cookie';
-import { useSelector } from "react-redux";
 import Link from "next/link";
 import { HiMenuAlt3 } from "react-icons/hi";
-import { FaArrowRightLong } from "react-icons/fa6";
 import { GoPerson } from "react-icons/go";
 const Navbar = () => {
   const [showMenu, setshowMenu] = useState(false);
-  const [showNotification, setshowNotification] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   let token: string = Cookies.get('token')
-  const { isAuthenticated } = useSelector((state: any) => state.user) || { isAuthenticated: false };
   return (
     <div className="w-full bg-[#060d20] sticky top-0 z-50 nav-boxshadow">
       <div className="py-4 px-6 flex items-center justify-between">
