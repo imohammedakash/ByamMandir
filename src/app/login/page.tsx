@@ -13,7 +13,7 @@ import SuccessModal from "@/components/Modals/SuccessModal";
 import Link from "next/link";
 import { loginUserApi } from "@/Redux/Action/user";
 import { registerUser } from "@/Redux/UserSlice";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 interface Credentials {
     email: string;
     password: string;
@@ -26,6 +26,8 @@ const LoginPage: React.FC = () => {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [message, setMessage] = useState("");
     const [showErrorModal, setShowErrorModal] = useState(false);
+    const searchParams = useSearchParams()
+    const view = searchParams.get('view');
     const dispatch = useDispatch();
     const router = useRouter()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,7 +47,7 @@ const LoginPage: React.FC = () => {
             if (data.status === 200) {
                 setLoading(false);
                 dispatch(registerUser(data.data));
-                return router.push('/')
+                return router.push(view ? btoa(view) : '/profile/general')
             }
             const errorMessage = data?.message?.includes(':')
                 ? data.message.split(':')[2].trim()
@@ -95,7 +97,7 @@ const LoginPage: React.FC = () => {
 
                     <span className="uppercase text-white font-light md:text-start text-center">
                         Don&apos;t have a account?
-                        <Link href="/signup" className="text-[#3c8aff] ml-1">
+                        <Link href={`/signup${view ? `?view=${view}` : ''}`} className="text-[#3c8aff] ml-1">
                             Register
                         </Link>
                     </span>

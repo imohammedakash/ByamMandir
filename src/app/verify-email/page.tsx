@@ -1,6 +1,6 @@
 "use client"
 import { verifyEmailApi } from "@/Redux/Action/user";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -11,6 +11,8 @@ const OTPField: React.FC<Props> = (props): JSX.Element => {
     const [active, setActive] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const router = useRouter()
+    const searchParams = useSearchParams()
+    const view = searchParams.get('view');
     const inputRef = useRef<HTMLInputElement>(null)
     const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>, index: number) => {
         const newOtp: string[] = [...otp]
@@ -34,7 +36,7 @@ const OTPField: React.FC<Props> = (props): JSX.Element => {
             let data = await verifyEmailApi(payload);
             if (data.status >= 200 && data.status < 300) {
                 toast.success(data.message);
-                router.push('/');
+                return router.push(view ? atob(view) : '/profile/general')
             } else {
                 toast.error(data.message);
             }

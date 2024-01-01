@@ -15,6 +15,12 @@ export const getUserProfileApi = async () => {
   });
   return response.data;
 };
+export const getUserSubscriptionApi = async () => {
+  const response = await axios.post(`/api/users/profile`, {
+    withCredentials: true
+  });
+  return response.data;
+};
 export const updateUserApi = async (userData: { firstname: string; lastname: string; phone: string; profile: string }) => {
   const response = await axios.post(`/api/users/update-profile`, userData);
   return response.data;
@@ -25,6 +31,12 @@ export const LogoutUserApi = async () => {
 }
 export const verifyEmailApi = async (userData: { otp: string; }) => {
   const response = await axios.post(`/api/users/verify-email`, userData);
+  return response.data;
+};
+export const sendEmailVerificationMailApi = async () => {
+  const response = await axios.post(`/api/users/send-email-verification-mail`, {
+    withCredentials: true
+  });
   return response.data;
 };
 

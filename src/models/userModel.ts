@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        unique: true,
+        unique: [true, 'Email Already Exists'],
         required: [true, 'Please Provide an Email'],
     },
     password: {
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: String,
-        unique: true,
+        unique: [true, 'Phone Number Already Exists'],
         default: ''
     },
     isverified: {

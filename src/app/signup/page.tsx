@@ -7,7 +7,7 @@ import {
     AiOutlineEye,
     AiOutlineEyeInvisible,
 } from "react-icons/ai";
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { BsTelephone } from "react-icons/bs";
 import AuthInput from "@/components/InputControl/AuthInput";
 import ErrorModal from "@/components/Modals/ErrorModal";
@@ -39,6 +39,8 @@ const RegisterPage: React.FC = () => {
         password: "",
         phone: "",
     });
+    const searchParams = useSearchParams()
+    const view = searchParams.get('view');
     const dispatch = useDispatch()
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -56,7 +58,7 @@ const RegisterPage: React.FC = () => {
             if (data.status === 200) {
                 setLoading(false);
                 dispatch(registerUser(data.data));
-                return router.push(data.mailStatus === 200 ? '/verify-email' : '/')
+                return router.push(data.mailStatus === 200 ? `/verify-email${view ? `?view=${view}` : ''}`: '/')
             }
             const errorMessage = data?.message?.includes(':')
                 ? data.message.split(':')[2].trim()
@@ -66,6 +68,8 @@ const RegisterPage: React.FC = () => {
         } catch (err: any) {
             setMessage(err.message);
             setShowErrorModal(true);
+        }finally{
+            setLoading(false);
         }
 
 
@@ -106,7 +110,7 @@ const RegisterPage: React.FC = () => {
 
                     <span className="uppercase md:text-start text-center text-white font-light">
                         Already a member?{" "}
-                        <Link href="/login" className="text-[#3c8aff] ml-1">
+                        <Link href={`/login${view ? `?view=${view}` : ''}`} className="text-[#3c8aff] ml-1">
                             Login
                         </Link>
                     </span>

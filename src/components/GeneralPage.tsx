@@ -10,7 +10,7 @@ import AuthInput from "@/components/InputControl/AuthInput";
 import { toast } from "react-toastify";
 import { FaLandmark, FaRegBuilding } from "react-icons/fa";
 import { FaLandmarkFlag, FaPlaceOfWorship, FaSignsPost, FaTreeCity } from "react-icons/fa6";
-import { getUserProfileApi, updateUserApi } from '@/Redux/Action/user';
+import { getUserProfileApi, sendEmailVerificationMailApi, updateUserApi } from '@/Redux/Action/user';
 import { useRouter } from 'next/navigation';
 interface profileProps {
     firstname: string;
@@ -18,6 +18,7 @@ interface profileProps {
     email: string;
     phone: string;
     profile: string;
+    isverified: boolean;
     address: string,
     appartment: string,
     city: string,
@@ -34,6 +35,7 @@ const GeneralPage: React.FC = () => {
         email: '',
         phone: '',
         profile: '',
+        isverified: false,
         address: '',
         appartment: '',
         city: '',
@@ -49,6 +51,7 @@ const GeneralPage: React.FC = () => {
         }
     }, [])
     const getUserDetails = () => {
+        setLoading(true);
         getUserProfileApi().then((data => {
             if (data?.status === 200) {
                 setProfile(data.data)
@@ -58,6 +61,8 @@ const GeneralPage: React.FC = () => {
         })).catch((err: any) => {
             router.push('/')
             toast.error(err.message)
+        }).finally(() => {
+            setLoading(false)
         })
     }
     const handleSave = async (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -84,22 +89,52 @@ const GeneralPage: React.FC = () => {
             setLoading(false);
         }
     };
+    const verifyUserMail = async () => {
+        try {
+            const data = await sendEmailVerificationMailApi();
+            if (data.status === 200) {
+                toast.success(data.message);
+                router.push('/verify-email')
+                return
+            }
+            const errorMessage = data?.message?.includes(':')
+                ? data.message.split(':')[2].trim()
+                : data?.message?.trim() || 'An unknown error occurred';
+            toast.error(errorMessage);
+        } catch (err: any) {
+            toast.error(err.message)
+        } finally {
+            setLoading(false);
+        }
+    }
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setProfile({ ...profile, [e.target.name]: e.target.value });
     };
-    return (
+    return loading || profile.email === '' ? <div className='min-h-[70vh] flex items-center justify-center'>
+        <div className="h-10 w-10 rounded-full border-t-2 border-l-2 animate-spin " />
+    </div> : (
         <div className='w-full'>
             <div className="border w-full flex items-center justify-between rounded p-4">
                 <div className="flex items-start justify-center flex-col gap-1 ">
                     <span className='text-white sm:text-2xl tracking-wider'>Avatar</span>
                     <span className='text-white sm:text-sm text-xs tracking-wider'>This is Your Avatar</span>
                     <span className='text-white sm:text-sm text-xs tracking-wider'>Click on the Avatar to Choose your Image</span>
-                    <span></span>
                 </div>
                 <div className="">
                     <img loading='lazy' className='sm:h-24 sm:w-24 w-20 h-20 rounded-full' src="https://mohammedakash.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2FProfile.2dc40604.jpg&w=384&q=75" alt="" />
                 </div>
             </div>
+            {
+                !profile?.isverified ? <div className="border w-full flex items-center justify-between rounded p-4 mt-3" >
+                    <div className="flex items-start justify-center flex-col gap-1 ">
+                        <span className='text-white sm:text-2xl tracking-wider'>Verification</span>
+                        <span className='text-white sm:text-sm text-xs tracking-wider'>Your Profile is yet to be verified</span>
+                    </div>
+                    <div className="">
+                        <button onClick={verifyUserMail} className='border px-6 py-1 text-white'>Verify</button>
+                    </div>
+                </div> : ''
+            }
             <div className="border w-full flex items-center flex-col justify-between rounded p-4 mt-3">
                 <div className="w-full flex gap-4 text-white mt-4">
                     <AuthInput
@@ -179,7 +214,7 @@ const GeneralPage: React.FC = () => {
                 <div className="w-full flex gap-4 text-white mt-4">
                     <AuthInput
                         label="postalCode"
-                        Icon={BsSignpost2} 
+                        Icon={BsSignpost2}
                         type="text"
                         name="postalCode"
                         value={profile?.postalCode}
