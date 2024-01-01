@@ -27,7 +27,7 @@ const Menu = () => {
             if (data.status === 200) {
                 toast.success(data.message)
                 dispatch(logoutUser());
-                router.push('/');
+                router.push('/login');
                 return
             }
             const errorMessage = data?.message?.includes(':')
