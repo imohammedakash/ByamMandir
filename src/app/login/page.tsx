@@ -26,7 +26,7 @@ const LoginPage: React.FC = () => {
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const [message, setMessage] = useState("");
     const [showErrorModal, setShowErrorModal] = useState(false);
-    const searchParams = useSearchParams()
+    const searchParams = useSearchParams();
     const view = searchParams.get('view');
     const dispatch = useDispatch();
     const router = useRouter()

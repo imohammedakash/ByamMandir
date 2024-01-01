@@ -35,10 +35,10 @@ const Profile = ({ params }: any) => {
               <Link href='/profile/general' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'general' ? ' border text-[#fff]' : 'text-white'}`}>
                 General
               </Link>
-              <Link href='/profile/gym-pass' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'access-token' ? ' border text-[#fff]' : 'text-white'}`}>
+              <Link href='/profile/gym-pass' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'gym-pass' ? ' border text-[#fff]' : 'text-white'}`}>
                 Gym Pass
               </Link>
-              <Link href='/profile/others' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'address' ? ' border text-[#fff]' : 'text-white'}`}>
+              <Link href='/profile/others' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'others' ? ' border text-[#fff]' : 'text-white'}`}>
                 others
               </Link>
             </div>
