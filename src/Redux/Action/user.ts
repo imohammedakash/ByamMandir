@@ -10,7 +10,7 @@ export const registerUserApi = async (userData: { firstname: string; lastname: s
   return response.data;
 };
 export const getUserProfileApi = async () => {
-  const response = await axios.get(`/api/users/profile`, {
+  const response = await axios.post(`/api/users/profile`, {
     withCredentials: true
   });
   return response.data;
