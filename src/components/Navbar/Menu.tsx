@@ -3,6 +3,7 @@ import React from 'react'
 import NavbarMenuItem from './NavbarMenuItem'
 import { MdOutlineLogout, MdCardMembership, MdPerson } from 'react-icons/md'
 import { GiPathDistance, GiBodyBalance } from 'react-icons/gi'
+import { GrBlog } from "react-icons/gr";
 import { CgGym } from 'react-icons/cg'
 import Cookies from 'js-cookie';
 import { BiStore } from 'react-icons/bi'
@@ -11,6 +12,7 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 import { logoutUser } from '@/Redux/UserSlice'
 import { LogoutUserApi } from '@/Redux/Action/user'
+import { GiOpenedFoodCan } from "react-icons/gi";
 import { useDispatch } from 'react-redux'
 const Menu = () => {
     const token = Cookies.get('token');
@@ -56,12 +58,20 @@ const Menu = () => {
                 </div>
             }
             <div className="flex flex-col bg-white gap-5 px-5">
-                <NavbarMenuItem menuName='diet' Icon={GiBodyBalance} />
+                <NavbarMenuItem menuName='diet' Icon={GiOpenedFoodCan} />
                 {
                     token ? <NavbarMenuItem menuName='routine' Icon={CgGym} /> : ''
                 }
                 <NavbarMenuItem menuName='road map' Icon={GiPathDistance} />
-                <NavbarMenuItem menuName='membership' Icon={MdCardMembership} />
+                <div className="md:hidden">
+                    <NavbarMenuItem menuName='membership' Icon={MdCardMembership} />
+                </div>
+                <div className="md:hidden">
+                    <NavbarMenuItem menuName='exercise' Icon={GiBodyBalance} />
+                </div>
+                <div className="md:hidden">
+                    <NavbarMenuItem menuName='blog' Icon={GrBlog} />
+                </div>
                 <NavbarMenuItem menuName='store' Icon={BiStore} />
             </div>
             {

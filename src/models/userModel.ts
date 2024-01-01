@@ -31,6 +31,12 @@ const userSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
+    address: String,
+    appartment: String,
+    city: String,
+    state: String,
+    country: String,
+    postalCode: String,
     forgetPasswordToken: String,
     forgetPasswordTokenExpiry: Date,
     otp: String

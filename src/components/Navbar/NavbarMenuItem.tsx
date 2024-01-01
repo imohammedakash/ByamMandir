@@ -7,7 +7,7 @@ interface NavbarProps {
 const NavbarMenuItem: React.FC<NavbarProps> = ({ Icon, menuName }) => {
     return (
         <Link href={`/${menuName}`} className='flex items-center justify-between gap-20'>
-            <div className="text-gray-800 capitalize flex items-center justify-start gap-3 text-xl">
+            <div className="text-gray-800 capitalize flex items-center justify-start gap-3 text-xl whitespace-nowrap">
                 <Icon />
                 {menuName}
             </div>

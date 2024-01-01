@@ -24,8 +24,7 @@ export async function POST(request: NextRequest) {
           if (keys[i] !== 'isAdmin' && keys[i] !== 'password' && keys[i] !== 'email' ) {
             user[keys[i]] = reqBody[keys[i]];
           }
-        }    
-        console.log(user)    
+        }      
         await user.save();
         return NextResponse.json({
             message: 'User Updated successfully',

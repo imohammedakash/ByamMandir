@@ -4,10 +4,12 @@ import {
     AiOutlineUser,
     AiOutlineMail,
 } from "react-icons/ai";
-import { BsTelephone } from "react-icons/bs";
+import { BsSignpost2, BsSignpostSplit, BsTelephone } from "react-icons/bs";
 import Cookies from 'js-cookie'
 import AuthInput from "@/components/InputControl/AuthInput";
 import { toast } from "react-toastify";
+import { FaLandmark, FaRegBuilding } from "react-icons/fa";
+import { FaLandmarkFlag, FaPlaceOfWorship, FaSignsPost, FaTreeCity } from "react-icons/fa6";
 import { getUserProfileApi, updateUserApi } from '@/Redux/Action/user';
 import { useRouter } from 'next/navigation';
 interface profileProps {
@@ -16,6 +18,12 @@ interface profileProps {
     email: string;
     phone: string;
     profile: string;
+    address: string,
+    appartment: string,
+    city: string,
+    state: string,
+    country: string,
+    postalCode: string,
 
 }
 const GeneralPage: React.FC = () => {
@@ -26,6 +34,12 @@ const GeneralPage: React.FC = () => {
         email: '',
         phone: '',
         profile: '',
+        address: '',
+        appartment: '',
+        city: '',
+        state: '',
+        country: '',
+        postalCode: ''
     })
     const [loading, setLoading] = useState(false)
     const token = Cookies.get('token');
@@ -121,6 +135,62 @@ const GeneralPage: React.FC = () => {
                         type="number"
                         name="phone"
                         value={profile.phone}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="w-full flex gap-4 text-white mt-4">
+                    <AuthInput
+                        label="address"
+                        Icon={FaPlaceOfWorship}
+                        type="text"
+                        name="address"
+                        value={profile?.address}
+                        onChange={handleChange}
+                    />
+                    <AuthInput
+                        label="appartment"
+                        Icon={FaRegBuilding}
+                        type="text"
+                        name="appartment"
+                        value={profile?.appartment || ''}
+                        onChange={handleChange}
+                    />
+                </div>
+
+                <div className="w-full flex gap-4 text-white mt-4">
+                    <AuthInput
+                        label="city"
+                        Icon={FaTreeCity}
+                        type="text"
+                        name="city"
+                        value={profile?.city}
+                        onChange={handleChange}
+                    />
+                    <AuthInput
+                        label="state"
+                        Icon={BsSignpostSplit}
+                        type="text"
+                        name="state"
+                        value={profile?.state}
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="w-full flex gap-4 text-white mt-4">
+                    <AuthInput
+                        label="postalCode"
+                        Icon={BsSignpost2} 
+                        type="text"
+                        name="postalCode"
+                        value={profile?.postalCode}
+                        onChange={handleChange}
+                    />
+                    <AuthInput
+                        label="country"
+                        Icon={FaLandmark}
+                        type="text"
+                        name="country"
+                        value={profile?.country}
                         onChange={handleChange}
                     />
                 </div>
