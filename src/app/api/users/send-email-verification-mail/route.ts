@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
             });
         }
         let data: any = await commonHelper.JwtParser(token?.value)
-        const user = await User.findOne({ _id: data.userID }, 'otp email');
+        const user = await User.findOne({ _id: data.userID }, 'otp email firstname');
         if (!user) {
             throw new Error('Unauthorized Access of Resource')
         }
