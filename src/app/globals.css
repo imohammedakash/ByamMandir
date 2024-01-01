@@ -61,42 +61,33 @@ body::-webkit-scrollbar {
 .glowing-effect {
     transition: all 1s linear;
     animation: animate 8s linear infinite;
+    color: #4fd3ff08;
 }
 
 @keyframes animate {
+    0%, 100% {
+        animation-delay: 0s; /* No delay at the start and end of each iteration */
+    }
 
-    0%,
-    5%,
-    18%,
-    20%,
-    45%,
-    50.1%,
-    60%,
-    65.1%,
-    80%,
-    98% {
+    5%, 20%, 50.1%, 65.1%, 90.1% {
+        animation-delay: 7s; /* 7-second delay at the start of these keyframes */
+    }
 
+    18%, 45%, 60%, 80%, 98% {
+        animation-delay: 14s; /* 14-second delay at the start of these keyframes */
+    }
+
+    0%, 5%, 18%, 20%, 45%, 50.1%, 60%, 65.1%, 80%, 98% {
         color: white;
-        text-shadow: 0 0 10px #03bcf4,
-            0 0 20px #03bcf4;
-
+        text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4;
     }
 
-    0%,
-    10%,
-    18%,
-    20%,
-    25%,
-    35%,
-    85%,
-    90.1%,
-    92%,
-    100% {
+    0%, 10%, 18%, 20%, 25%, 35%, 85%, 90.1%, 92%, 100% {
         text-shadow: none;
-        color: #4fd3ff08
+        color: #4fd3ff08;
     }
-
 }
+
 
 .nav-boxshadow {
     box-shadow:
