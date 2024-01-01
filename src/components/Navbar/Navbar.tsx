@@ -12,15 +12,16 @@ const Navbar = () => {
   return (
     <div className="w-full bg-[#060d20] sticky top-0 z-50 nav-boxshadow">
       <div className="py-4 px-6 flex items-center justify-between">
-        <Link href="/">
-          <img loading='lazy'
-            src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
-            alt="Logo"
-            className="sm:h-12 h-8"
-          />
-        </Link>
-
-        <div className="flex items-center justify-center ml-12">
+        <div className="flex flex-1 items-center justify-start">
+          <Link href="/">
+            <img loading='lazy'
+              src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
+              alt="Logo"
+              className="sm:h-12 h-8"
+            />
+          </Link>
+        </div>
+        <div className="flex flex-1 items-center justify-center ml-12">
           <Link href="/" className="text-white capitalize md:block hidden">
             Home
           </Link>
@@ -36,7 +37,7 @@ const Navbar = () => {
             Blog
           </Link>
         </div>
-        <div className="flex items-center justify-center gap-5 relative">
+        <div className="flex flex-1 items-center justify-end gap-5 relative">
           <div className={` ${token ? '' : 'md:hidden'} flex items-center justify-center gap-5 relative`}>
             <div
               className="flex items-center justify-center h-8 w-8 overflow-hidden rounded-full cursor-pointer text-3xl font-bold text-white"
