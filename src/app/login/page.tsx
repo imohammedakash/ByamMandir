@@ -83,11 +83,13 @@ const LoginPage: React.FC = () => {
 
                     <span className="uppercase text-white text-xs tracking-widest flex items-center md:justify-start justify-center md:flex-row flex-col gap-1">
                         Restart your journey with
-                        <img loading='lazy'
-                            src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
-                            alt="Logo"
-                            className="h-12"
-                        />
+                        <Link href='/'>
+                            <img loading='lazy'
+                                src="https://res.cloudinary.com/dn83xtspp/image/upload/v1676199461/Byam_Mandir__3_-removebg-preview_1_adss24.png"
+                                alt="Logo"
+                                className="h-12"
+                            />
+                        </Link>
                         again
                     </span>
 
