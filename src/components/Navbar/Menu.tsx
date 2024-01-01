@@ -22,6 +22,7 @@ const Menu = () => {
             return;
         }
         try {
+            Cookies.remove('token');
             const data = await LogoutUserApi();
             if (data.status === 200) {
                 toast.success(data.message)
