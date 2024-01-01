@@ -1,5 +1,5 @@
+"use client"
 import React from 'react'
-
 import { HiPhone, HiOutlineMail } from "react-icons/hi"
 import Link from 'next/link'
 import Wrapper from '@/components/Wrapper'

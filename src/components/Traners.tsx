@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import TrainerComp from './TrainerComp'
 import { getRandomColor } from './RandomPassword'

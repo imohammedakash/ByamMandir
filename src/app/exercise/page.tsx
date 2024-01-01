@@ -1,8 +1,7 @@
+"use client"
 import React from 'react'
-
 import Wrapper from '@/components/Wrapper'
 import ExcerciseContainer from '@/components/Excercise/ExcerciseContainer'
-
 const Excercise = () => {
     return (
         <Wrapper>

@@ -3,17 +3,10 @@ import React from 'react';
 import Wrapper from '@/components/Wrapper';
 import GeneralPage from '@/components/GeneralPage';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'
-const Profile = () => {
-  const pathname = usePathname();
-  const router = useRouter()
-  let page = pathname.split('/')[2];
+const Profile = ({ params }: any) => {
+  let page = params.id
   const token = Cookies.get('token');
-  if (!token) {
-    router.push('/')
-    return
-  }
   const renderPage = () => {
     switch (page) {
       case 'general':
@@ -22,10 +15,9 @@ const Profile = () => {
         return <div className='h-[70vh] text-white flex items-center justify-center text-xl tracking-wider border'>Nothing to show</div>;
     }
   };
-
-  return (
-    <Wrapper>
-      <>
+  if (token)
+    return (
+      <Wrapper>
         <div className="w-full flex flex-col items-center justify-center sm:my-10 my-3">
           <div className="md:w-[80%] w-full px-2 ">
             <div className="w-full sm:h-[10vh] sm:py-0 py-3 sm:text-start text-center text-3xl text-white border-b mb-8">
@@ -39,18 +31,22 @@ const Profile = () => {
                 <Link href='/profile/address' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'address' ? ' border text-[#fff]' : 'text-white'}`}>
                   Address
                 </Link>
-
-                {/* Add more links as needed */}
+                <Link href='/profile/access-token' className={` w-auto sm:w-full py-2 sm:px-2 px-6 rounded ${page === 'access-token' ? ' border text-[#fff]' : 'text-white'}`}>
+                  Access Token
+                </Link>
               </div>
               <div className="sm:w-[76%] w-full sm:mt-0 mt-4">
-                {renderPage()}
+                {token ? renderPage() : ''}
               </div>
             </div>
           </div>
         </div>
-      </>
-    </Wrapper>
-  );
+      </Wrapper>
+    )
+  else
+    return <div className="w-full h-screen flex items-center justify-center bg-white sm:text-2xl text-lg tracking-wide">
+      404: Page Not Found
+    </div>
 };
 
 export default Profile;

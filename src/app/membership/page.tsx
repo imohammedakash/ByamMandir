@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import { FaCrown, FaHandPointRight } from 'react-icons/fa'
 import { FaHeartBroken } from 'react-icons/fa'
